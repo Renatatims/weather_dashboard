@@ -18,103 +18,130 @@
 
 <body>
 
-<!-- Sidenav-->
-	<ul class="list-group">
-		<li class="list-group-item">An item</li>
-		<li class="list-group-item">Austin</li>
-		<li class="list-group-item">Seattle</li>
-		<li class="list-group-item">New York</li>
-		<li class="list-group-item">San Francisco</li>
-	</ul>
+	<header class="jumbotron">
+		<h1 class="display-3">Weather DashBoard</h1>
+		<p class="lead"></p>
+	</header>
 
-<!-- End Sidenav-->
+	<!--Main Section-->
 
-<!--Chosen CITY Current Weather-->
+	<main class="row">
+		<!-- Sidenav-->
+		<section class="col-12 col-md-4 col-lg-3">
+			<nav class="navbar bg-light">
+				<div class="container-fluid">
+					<form class="d-flex" role="search">
+						<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+						<button class="btn btn-outline-success" type="submit">Search</button>
+					</form>
+				</div>
+			</nav>
+			<div class="card custom-card">
+				<h3 class="card-header">
+					Cities
+				</h3>
+				<div class="card-body">
+					<div class="card-text">
+						History
+					</div>
+				</div>
+				<ul class="list-group">
+					<li class="list-group-item">Austin</li>
+					<li class="list-group-item">San Francisco</li>
+					<li class="list-group-item">Seattle</li>
+					<li class="list-group-item">New York</li>
+					<li class="list-group-item">Orlando</li>
+				</ul>
+			</div>
+		</section>
+    <!-- End of Sidenav-->
 
-<div class="card" style="width: 18rem;">
-  <div class="card-body">
-    <h5 class="card-title">Chosen City</h5>
-    <h6 class="card-subtitle mb-2 text-muted">Date</h6>
-    <p class="card-text">Temperature: </p>
-		<p class="card-text">Wind: </p>
-		<p class="card-text">Humidity: </p>
-		<p class="card-text">UV Index: </p>
- 
-  </div>
-</div>
+		<div class="col-sm-6">
+			<div class="card" style="width: 18rem;">
+				<div class="card-body">
+					<h5 class="card-title">Chosen City</h5>
+					<h6 class="card-subtitle mb-2 text-muted">Date</h6>
+					<p class="card-text">Temperature: </p>
+					<p class="card-text">Wind: </p>
+					<p class="card-text">Humidity: </p>
+					<p class="card-text">UV Index: </p>
 
+				</div>
+			</div>
 
-<!--End of current weather-->
+			<!--CARDS - 5 Day Forecast-->
+			<h2> 5-Day Forecast</h2>
+			<div class="row row-cols-1 row-cols-md-3 g-4">
+				<div class="col">
+					<div class="card h-100">
+						<div class="card-body">
+							<h5 class="card-title">DATE</h5>
+							<img src="..." class="card-img-top" alt="...">
+							<p class="card-text">Temperature:</p>
+							<p class="card-text">Wind:</p>
+							<p class="card-text">Humidity:</p>
+						</div>
+					</div>
+				</div>
 
-<!--CARDS - 5 Day Forecast-->
-<div class="row row-cols-1 row-cols-md-3 g-4">
-  <div class="col">
-    <div class="card h-100">   
-      <div class="card-body">
-        <h5 class="card-title">DATE</h5>
-				<img src="..." class="card-img-top" alt="...">
-        <p class="card-text">Temperature:</p>
-				<p class="card-text">Wind:</p>
-				<p class="card-text">Humidity:</p>
-      </div>
-    </div>
-  </div>
+				<div class="col">
+					<div class="card h-100">
+						<div class="card-body">
+							<h5 class="card-title">DATE</h5>
+							<img src="..." class="card-img-top" alt="...">
+							<p class="card-text">Temperature:</p>
+							<p class="card-text">Wind:</p>
+							<p class="card-text">Humidity:</p>
+						</div>
+					</div>
+				</div>
 
-	<div class="col">
-    <div class="card h-100">   
-      <div class="card-body">
-        <h5 class="card-title">DATE</h5>
-				<img src="..." class="card-img-top" alt="...">
-        <p class="card-text">Temperature:</p>
-				<p class="card-text">Wind:</p>
-				<p class="card-text">Humidity:</p>
-      </div>
-    </div>
-  </div>
+				<div class="col">
+					<div class="card h-100">
+						<div class="card-body">
+							<h5 class="card-title">DATE</h5>
+							<img src="..." class="card-img-top" alt="...">
+							<p class="card-text">Temperature:</p>
+							<p class="card-text">Wind:</p>
+							<p class="card-text">Humidity:</p>
+						</div>
+					</div>
+				</div>
 
-	<div class="col">
-    <div class="card h-100">   
-      <div class="card-body">
-        <h5 class="card-title">DATE</h5>
-				<img src="..." class="card-img-top" alt="...">
-        <p class="card-text">Temperature:</p>
-				<p class="card-text">Wind:</p>
-				<p class="card-text">Humidity:</p>
-      </div>
-    </div>
-  </div>
+				<div class="col">
+					<div class="card h-100">
+						<div class="card-body">
+							<h5 class="card-title">DATE</h5>
+							<img src="..." class="card-img-top" alt="...">
+							<p class="card-text">Temperature:</p>
+							<p class="card-text">Wind:</p>
+							<p class="card-text">Humidity:</p>
+						</div>
+					</div>
+				</div>
 
-	<div class="col">
-    <div class="card h-100">   
-      <div class="card-body">
-        <h5 class="card-title">DATE</h5>
-				<img src="..." class="card-img-top" alt="...">
-        <p class="card-text">Temperature:</p>
-				<p class="card-text">Wind:</p>
-				<p class="card-text">Humidity:</p>
-      </div>
-    </div>
-  </div>
+				<div class="col">
+					<div class="card h-100">
+						<div class="card-body">
+							<h5 class="card-title">DATE</h5>
+							<img src="..." class="card-img-top" alt="...">
+							<p class="card-text">Temperature:</p>
+							<p class="card-text">Wind:</p>
+							<p class="card-text">Humidity:</p>
+						</div>
+					</div>
+				</div>
 
-	<div class="col">
-    <div class="card h-100">   
-      <div class="card-body">
-        <h5 class="card-title">DATE</h5>
-				<img src="..." class="card-img-top" alt="...">
-        <p class="card-text">Temperature:</p>
-				<p class="card-text">Wind:</p>
-				<p class="card-text">Humidity:</p>
-      </div>
-    </div>
-  </div>
-	
+				<!--End of Cards-->
 
-<!--End of Cards-->
+			</div>
+		</main>
+		<!--End of Main Section-->
 
-
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-	<script src="./assets/js/script.js"></script>
+<!--Script Links-->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+		<script src="./assets/js/script.js"></script>
 </body>
 
 </html>
