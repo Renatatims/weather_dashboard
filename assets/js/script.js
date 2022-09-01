@@ -1,12 +1,14 @@
 var APIkey = "&appid=4b240ff285db6735e81b43a05878c1bf";
 var searchBtn = $("#search");
 var weatherUrl = "https://api.openweathermap.org/data/2.5/weather";
+var units = "&units=metric"
 
 // Weather Forecast - Current and 5-days
 var weatherForecastEl = $("#weatherForecast");
 
 // Current Weather Variables
 var chosenCityEl = $("#chosenCity");
+var currentDateEl = $("#currentDate")
 var temperatureEl = $("#temperature");
 var windEl = $("#wind");
 var humidityEl = $("#humidity");
@@ -36,7 +38,7 @@ function searchCity(){
 // Function weatherCity - Fetch to get the citie's information//
 
 function weatherCity(userInputCity){
-	var queryUrl = weatherUrl + "?q=" + userInputCity + APIkey;
+	var queryUrl = weatherUrl + "?q=" + userInputCity + units + APIkey;
 
 	fetch(queryUrl).then(function(cityResponse){
 		if(cityResponse.ok){
@@ -46,14 +48,17 @@ function weatherCity(userInputCity){
 
 				var results = response;
 				var cityName = results.name;
+				var today = new Date();
+				var currentDate = (today.getMonth()+1) + "/" + today.getDate();
 				var cityTemperature = results.main.temp;
 				var cityWind = results.wind.speed;
 				var cityHumidity = results.main.humidity;
 
 				chosenCityEl.text(cityName);
-				temperatureEl.text("Temperature: " + cityTemperature);
-				windEl.text("Wind: " + cityWind);
-				humidityEl.text("Humidity: " + cityHumidity);
+				currentDateEl.text(currentDate);
+				temperatureEl.text("Temperature: " + cityTemperature + "°C");
+				windEl.text("Wind: " + cityWind + "km/h");
+				humidityEl.text("Humidity: " + cityHumidity + "%");
 
 
 				console.log(results);
