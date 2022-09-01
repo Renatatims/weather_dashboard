@@ -58,17 +58,17 @@
     <!-- End of Sidenav-->
 
 		
-		<div class="col-sm-9" style="visibility:hidden">
+		<div class="col-sm-9" id="weatherForecast">
 
 		<!--Chosen City -->
-			<div class="card chosenCity" style="width:100%">
+			<div class="card" style="width:100%">
 				<div class="card-body">
-					<h5 class="card-title">Chosen City</h5>
+					<h5 class="card-title" id="chosenCity">Chosen City</h5>
 					<h6 class="card-subtitle mb-2 text-muted">Date</h6>
-					<p class="card-text">Temperature: </p>
-					<p class="card-text">Wind: </p>
-					<p class="card-text">Humidity: </p>
-					<p class="card-text">UV Index: </p>
+					<p class="card-text" id="temperature"></p>
+					<p class="card-text" id="wind"> </p>
+					<p class="card-text" id="humidity"></p>
+					<p class="card-text" id="uvIndex"></p>
 
 				</div>
 			</div>
@@ -82,7 +82,7 @@
 					<div class="card h-100">
 						<div class="card-body">
 							<h5 class="card-title">DATE</h5>
-							<!--<!--<img src="..." class="card-img-top" alt="..."> --> -->
+							<!--<img src="..." class="card-img-top" alt="..."> --> 
 							<p class="card-text">Temperature:</p>
 							<p class="card-text">Wind:</p>
 							<p class="card-text">Humidity:</p>
