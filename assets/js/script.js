@@ -134,8 +134,11 @@ function forecastCity (userInputCity){
 				var cityTemperature2 = results5.list[2].main.temp;
 				var cityWind2 = results5.list[2].wind.speed;
 				var cityHumidity2 = results5.list[2].main.humidity;
+				var weatherIcon2 = results5.list[2].weather[0].icon;
+				var iconCompleteUrl2 = iconWeatherUrl + weatherIcon2 + '.png';
 
 				temperature2El.text("Temperature: " + cityTemperature2 + "°C");
+				icon2El.attr("src", iconCompleteUrl2);
 				wind2El.text("Wind: " + cityWind2 + "km/h" );
 				humidity2El.text("Humidity: " + cityHumidity2 + "%");
 
@@ -144,8 +147,11 @@ function forecastCity (userInputCity){
 				var cityTemperature3 = results5.list[3].main.temp;
 				var cityWind3 = results5.list[3].wind.speed;
 				var cityHumidity3 = results5.list[3].main.humidity;
+				var weatherIcon3 = results5.list[3].weather[0].icon;
+				var iconCompleteUrl3 = iconWeatherUrl + weatherIcon3 + '.png';
 
 				temperature3El.text("Temperature: " + cityTemperature3 + "°C");
+				icon3El.attr("src", iconCompleteUrl3);
 				wind3El.text("Wind: " + cityWind3 + "km/h" );
 				humidity3El.text("Humidity: " + cityHumidity3 + "%");
 
@@ -153,8 +159,11 @@ function forecastCity (userInputCity){
 				var cityTemperature4 = results5.list[4].main.temp;
 				var cityWind4 = results5.list[4].wind.speed;
 				var cityHumidity4 = results5.list[4].main.humidity;
+				var weatherIcon4 = results5.list[4].weather[0].icon;
+				var iconCompleteUrl4 = iconWeatherUrl + weatherIcon4 + '.png';
 
 				temperature4El.text("Temperature: " + cityTemperature4 + "°C");
+				icon4El.attr("src", iconCompleteUrl4);
 				wind4El.text("Wind: " + cityWind4 + "km/h" );
 				humidity4El.text("Humidity: " + cityHumidity4 + "%");
 
@@ -163,8 +172,11 @@ function forecastCity (userInputCity){
 				var cityTemperature5 = results5.list[5].main.temp;
 				var cityWind5 = results5.list[5].wind.speed;
 				var cityHumidity5 = results5.list[5].main.humidity;
+				var weatherIcon5 = results5.list[5].weather[0].icon;
+				var iconCompleteUrl5 = iconWeatherUrl + weatherIcon5 + '.png';
 
 				temperature5El.text("Temperature: " + cityTemperature5 + "°C");
+				icon5El.attr("src", iconCompleteUrl5);
 				wind5El.text("Wind: " + cityWind5 + "km/h" );
 				humidity5El.text("Humidity: " + cityHumidity5 + "%");
 				
