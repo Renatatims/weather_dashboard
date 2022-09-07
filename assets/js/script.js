@@ -120,10 +120,27 @@ function weatherCity(userInputCity){
 				fetch(uviQueryUrl).then(function(uviResponse){
 					if(uviResponse.ok){
 						uviResponse.json().then(function(resultUvi){
-							
+														
 							var UVI = resultUvi.value;
-
 							uvIndexEl.text("UV Index: " + UVI);
+
+							function colorCode(){
+								uvIndexEl.each(function(){
+									if(UVI<2){
+										uvIndexEl.addClass("low");
+									}else if (UVI>7){
+										uvIndexEl.addClass("high");
+									}else{
+										uvIndexEl.addClass("moderate");
+									}
+									
+								})
+							}
+
+							colorCode();
+
+						
+					
 							console.log(UVI);
 							
 						});

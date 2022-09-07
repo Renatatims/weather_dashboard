@@ -41,3 +41,28 @@
     padding: 10px;
     margin: 5px;
 }
+
+.low{
+    background-color: rgb(106, 204, 106) ;
+    color:black;
+    border-style:ridge;
+    border-radius: 2.5px;
+    border-color:white;
+}
+
+.moderate{
+    background-color: rgb(231, 231, 59) ;
+    color:black;
+    border-style:ridge;
+    border-radius: 2.5px;
+    border-color:white;
+}
+
+
+.high{
+    background-color: rgb(192, 50, 50);
+    color:black;
+    border-style:ridge;
+    border-radius: 2.5px;
+    border-color:white;
+}
