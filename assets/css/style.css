@@ -22,3 +22,14 @@
     color: white;
     border-radius: 10px;
 }
+
+#searchHistory{
+    list-style:none;
+    color:white;
+
+}
+
+#searchHistory li{
+    border-style:ridge;
+    border-color:white;
+}

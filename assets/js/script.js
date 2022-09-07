@@ -50,6 +50,7 @@ var humidity5El = $("#humidity5");
 
 var searchHistoryEl = $("#searchHistory");
 var historyArr = [];
+var clearHistoryBtn =$("#clearHistory")
 
 // Function Init - calls Search City function - once the user types in the city and click the Search button, then fetch will be executed.
 
@@ -57,8 +58,11 @@ function init(){
 	weatherForecastEl.hide();
 	searchCity();
 	historyDisplay();
-	hsitoryClick ();
-}
+	historyClear();
+	historyClick ();
+	
+
+};
 
 // Function - Event Listener to Search Button
 
@@ -72,7 +76,7 @@ function searchCity(){
 		weatherCity(userInputCity);
 		forecastCity(userInputCity);
 	});
-}
+};
 
 // Function weatherCity - Fetch to get the citie's information//
 
@@ -223,9 +227,9 @@ function historySave (userInputCity){
 	var historyObj = {};
 	historyObj["historyCity"] = userInputCity;
 	historyArr.push(historyObj);
-	localStorage.setItem("cityHistory", JSON.stringify(historryArr));
+	localStorage.setItem("cityHistory", JSON.stringify(historyArr));
 	searchHistoryEl.empty();
-	historyDisplay ();
+	historyDisplay();
 	
 }
 
@@ -233,24 +237,32 @@ function historySave (userInputCity){
 
 function historyDisplay (){
 	var getHistory = JSON.parse(localStorage.getItem("cityHistory"));
-	for (var i=0; i <getHistory.length; i++){
-		var cityHistoryLi = $("<li>");
+	for (var i=0; i < getHistory.length; i++){
+		var cityHistoryLi = $('<li>');
 		cityHistoryLi.text(getHistory[i].historyCity);
 		searchHistoryEl.append(cityHistoryLi);
 	}
-	return (historryArr = getHistory);
+	return (historyArr = getHistory);
 	
-}
+};
 
 //Event Listener to Cities saved on History
 
-function hsitoryClick (){
+function historyClick (){
 	searchHistoryEl.on("click", "li", function(){
 
 		var cityLi = $(this).text();
 		weatherCity(cityLi);
 	})
-}
+};
+
+
+function historyClear(){
+	clearHistoryBtn.on("click", function(){
+		searchHistoryEl.empty();
+		localStorage.clear();
+	})
+};
 
 
 
