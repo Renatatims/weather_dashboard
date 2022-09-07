@@ -121,17 +121,19 @@ function weatherCity(userInputCity){
 					if(uviResponse.ok){
 						uviResponse.json().then(function(resultUvi){
 														
-							var UVI = resultUvi.value;
-							uvIndexEl.text("UV Index: " + UVI);
-
 							function colorCode(){
-								uvIndexEl.each(function(){
-									if(UVI<2){
+								var UVI = resultUvi.value;
+							    uvIndexEl.text("UV Index: " + UVI);
+								uvIndexEl.each(function(event){
+									event.preventDefault;
+									if(UVI < 3){
 										uvIndexEl.addClass("low");
-									}else if (UVI>7){
+									}else if (UVI < 6){
+										uvIndexEl.addClass("moderate");
+									}else if (UVI < 8){
 										uvIndexEl.addClass("high");
 									}else{
-										uvIndexEl.addClass("moderate");
+										uvIndexEl.addClass("veryHigh");
 									}
 									
 								})
@@ -139,10 +141,7 @@ function weatherCity(userInputCity){
 
 							colorCode();
 
-						
-					
-							console.log(UVI);
-							
+										
 						});
 					};
 				});

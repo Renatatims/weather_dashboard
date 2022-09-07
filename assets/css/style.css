@@ -48,6 +48,9 @@
     border-style:ridge;
     border-radius: 2.5px;
     border-color:white;
+    width:fit-content;
+    font-weight: bold;
+    padding: 2.5px;
 }
 
 .moderate{
@@ -56,13 +59,31 @@
     border-style:ridge;
     border-radius: 2.5px;
     border-color:white;
+    width:fit-content;
+    font-weight: bold;
+    padding: 2.5px;
 }
 
 
 .high{
+    background-color: rgb(231, 127, 42);
+    color:black;
+    border-style:ridge;
+    border-radius: 2.5px;
+    border-color:white;
+    width:fit-content;
+    font-weight: bold;
+    padding: 2.5px;
+}
+
+.veryHigh{
     background-color: rgb(192, 50, 50);
     color:black;
     border-style:ridge;
     border-radius: 2.5px;
     border-color:white;
+    width:fit-content;
+    font-weight: bold;
+    padding: 2.5px;
 }
+
