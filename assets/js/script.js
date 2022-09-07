@@ -123,7 +123,7 @@ function weatherCity(userInputCity){
 							
 							var UVI = resultUvi.value;
 
-							$("#uvIndex").text("UV Index: " + UVI);
+							uvIndexEl.text("UV Index: " + UVI);
 							console.log(UVI);
 							
 						});
@@ -253,6 +253,7 @@ function historyClick (){
 
 		var cityLi = $(this).text();
 		weatherCity(cityLi);
+		forecastCity(cityLi);
 	})
 };
 
@@ -276,7 +277,6 @@ for (var i = 1; i<6; i++){
 
 	results5Arr.push()
 */
-
 
 
 //var searchHistory =[];

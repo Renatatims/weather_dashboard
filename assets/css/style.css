@@ -26,10 +26,18 @@
 #searchHistory{
     list-style:none;
     color:white;
+    padding: 20px;
+    cursor: pointer;
+    font-weight: bold;
+
 
 }
 
 #searchHistory li{
     border-style:ridge;
+    border-radius: 5px;
     border-color:white;
+    text-align: center;
+    padding: 10px;
+    margin: 5px;
 }
