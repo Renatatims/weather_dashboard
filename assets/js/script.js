@@ -45,11 +45,19 @@ var icon5El =$("#icon5");
 var wind5El = $("#wind5");
 var humidity5El = $("#humidity5");
 
+
+//History Variables//
+
+var searchHistoryEl = $("#searchHistory");
+var historyArr = [];
+
 // Function Init - calls Search City function - once the user types in the city and click the Search button, then fetch will be executed.
 
 function init(){
 	weatherForecastEl.hide();
 	searchCity();
+	historyDisplay();
+	hsitoryClick ();
 }
 
 // Function - Event Listener to Search Button
@@ -73,19 +81,21 @@ function weatherCity(userInputCity){
 
 	fetch(queryUrl).then(function(cityResponse){
 		if(cityResponse.ok){
-			cityResponse.json().then(function (response){
+			cityResponse.json().then(function (resultWeatherCity){
 
 				weatherForecastEl.show();
 
-				var results = response;
-				var cityName = results.name;
+				var resultCity = resultWeatherCity;
+				var cityName = resultCity.name;
 				var today = new Date();
 				var currentDate = (today.getMonth()+1) + "/" + today.getDate();
-				var cityTemperature = results.main.temp;
-				var cityWind = results.wind.speed;
-				var cityHumidity = results.main.humidity;
-				var weatherIcon = results.weather[0].icon;
+				var cityTemperature = resultCity.main.temp;
+				var cityWind = resultCity.wind.speed;
+				var cityHumidity = resultCity.main.humidity;
+				var weatherIcon = resultCity.weather[0].icon;
 				var iconCompleteUrl = iconWeatherUrl + weatherIcon + '.png';
+
+				historySave(cityName);
 
 				chosenCityEl.text(cityName);
 				currentDateEl.text(currentDate);
@@ -95,23 +105,23 @@ function weatherCity(userInputCity){
 				humidityEl.text("Humidity: " + cityHumidity + "%");
 
 
-				console.log(results);
+				console.log(resultCity);
 
 				// UV Index // specific URL for UV index
 
-				var latCity = response.coord.lat;
-				var lonCity = response.coord.lon;
+				var latCity = resultCity.coord.lat;
+				var lonCity = resultCity.coord.lon;
 				var uviQueryUrl = uviUrl + "?" + APIkey + "&lat=" + latCity + "&lon=" + lonCity
 
 				fetch(uviQueryUrl).then(function(uviResponse){
 					if(uviResponse.ok){
 						uviResponse.json().then(function(resultUvi){
-							var result = resultUvi
+							
 							var UVI = resultUvi.value;
 
 							$("#uvIndex").text("UV Index: " + UVI);
 							console.log(UVI);
-							console.log(resultUvi);
+							
 						});
 					};
 				});
@@ -204,8 +214,47 @@ function forecastCity (userInputCity){
 		)}
 })};
 
-init();
 
+
+//History Save//
+
+
+function historySave (userInputCity){
+	var historyObj = {};
+	historyObj["historyCity"] = userInputCity;
+	historyArr.push(historyObj);
+	localStorage.setItem("cityHistory", JSON.stringify(historryArr));
+	searchHistoryEl.empty();
+	historyDisplay ();
+	
+}
+
+//History Display//
+
+function historyDisplay (){
+	var getHistory = JSON.parse(localStorage.getItem("cityHistory"));
+	for (var i=0; i <getHistory.length; i++){
+		var cityHistoryLi = $("<li>");
+		cityHistoryLi.text(getHistory[i].historyCity);
+		searchHistoryEl.append(cityHistoryLi);
+	}
+	return (historryArr = getHistory);
+	
+}
+
+//Event Listener to Cities saved on History
+
+function hsitoryClick (){
+	searchHistoryEl.on("click", "li", function(){
+
+		var cityLi = $(this).text();
+		weatherCity(cityLi);
+	})
+}
+
+
+
+init();
 
 //For loop//
 /*
