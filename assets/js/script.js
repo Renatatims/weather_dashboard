@@ -1,10 +1,10 @@
-var APIkey = "&appid=4b240ff285db6735e81b43a05878c1bf";
+var APIkey = "appid=4b240ff285db6735e81b43a05878c1bf";
 var searchBtn = $("#search");
 var weatherUrl = "https://api.openweathermap.org/data/2.5/weather";
 var units = "&units=metric"
 var forecastUrl = "https://api.openweathermap.org/data/2.5/forecast";
 var iconWeatherUrl = "https://openweathermap.org/img/wn/";
-
+var uviUrl = 'https://api.openweathermap.org/data/2.5/uvi'
 
 // Weather Forecast - Current and 5-days
 var weatherForecastEl = $("#weatherForecast");
@@ -69,7 +69,7 @@ function searchCity(){
 // Function weatherCity - Fetch to get the citie's information//
 
 function weatherCity(userInputCity){
-	var queryUrl = weatherUrl + "?q=" + userInputCity + units + APIkey;
+	var queryUrl = weatherUrl + "?q=" + userInputCity + units + "&" + APIkey;
 
 	fetch(queryUrl).then(function(cityResponse){
 		if(cityResponse.ok){
@@ -97,17 +97,36 @@ function weatherCity(userInputCity){
 
 				console.log(results);
 
+				// UV Index // specific URL for UV index
+
+				var latCity = response.coord.lat;
+				var lonCity = response.coord.lon;
+				var uviQueryUrl = uviUrl + "?" + APIkey + "&lat=" + latCity + "&lon=" + lonCity
+
+				fetch(uviQueryUrl).then(function(uviResponse){
+					if(uviResponse.ok){
+						uviResponse.json().then(function(resultUvi){
+							var result = resultUvi
+							var UVI = resultUvi.value;
+
+							$("#uvIndex").text("UV Index: " + UVI);
+							console.log(UVI);
+							console.log(resultUvi);
+						});
+					};
+				});
+
 				
 
-			})
-		}
-	})
+			});
+		};
+	});
 };
 
 // Function - Forecast - 5 days
 
 function forecastCity (userInputCity){
-	var forecastQueryUrl = forecastUrl + "?q=" + userInputCity + units + APIkey;
+	var forecastQueryUrl = forecastUrl + "?q=" + userInputCity + units + "&" + APIkey;
 	fetch(forecastQueryUrl).then(function(city5Response){
 		if(city5Response.ok){
 			city5Response.json().then(function (response5){
