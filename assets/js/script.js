@@ -181,15 +181,15 @@ function forecastCity (userInputCity){
 									
 				var cityTemperature1 = results5.list[1].main.temp;
 				var date1 = results5.list[2].dt;
-				var date1dayjs = new Date(dayjs.unix(date1));
-				var d1js = date1dayjs.toLocaleString("en-US", {weekday: "long", day: "numeric", month: "numeric"});
+				var dateNew1 = new Date(dayjs.unix(date1));
+				var date1dayjs = dateNew1.toLocaleString("en-US", {weekday: "long", day: "numeric", month: "numeric"});
 				var cityWind1 = results5.list[1].wind.speed;
 				var cityHumidity1 = results5.list[1].main.humidity;
 				var weatherIcon1 = results5.list[1].weather[0].icon;
 				var iconCompleteUrl1 = iconWeatherUrl + weatherIcon1 + '.png';
 
 				temperature1El.text("Temperature: " + cityTemperature1 + "°C");
-				forecastDate1El.text(d1js);
+				forecastDate1El.text(date1dayjs);
 				icon1El.attr("src", iconCompleteUrl1);
 				wind1El.text("Wind: " + cityWind1 + "km/h" );
 				humidity1El.text("Humidity: " + cityHumidity1 + "%");
@@ -199,7 +199,8 @@ function forecastCity (userInputCity){
 
 				var cityTemperature2 = results5.list[2].main.temp;
 				var date2 = results5.list[10].dt;
-				var date2dayjs = dayjs.unix(date2)
+				var dateNew2 = new Date(dayjs.unix(date2));
+				var date2dayjs = dateNew2.toLocaleString("en-US", {weekday: "long", day: "numeric", month: "numeric"});
 				var cityWind2 = results5.list[2].wind.speed;
 				var cityHumidity2 = results5.list[2].main.humidity;
 				var weatherIcon2 = results5.list[2].weather[0].icon;
@@ -215,7 +216,8 @@ function forecastCity (userInputCity){
 
 				var cityTemperature3 = results5.list[3].main.temp;
 				var date3 = results5.list[18].dt;
-				var date3dayjs = dayjs.unix(date3)
+				var dateNew3 = new Date(dayjs.unix(date3));
+				var date3dayjs = dateNew3.toLocaleString("en-US", {weekday: "long", day: "numeric", month: "numeric"});
 				var cityWind3 = results5.list[3].wind.speed;
 				var cityHumidity3 = results5.list[3].main.humidity;
 				var weatherIcon3 = results5.list[3].weather[0].icon;
@@ -230,7 +232,8 @@ function forecastCity (userInputCity){
 				/*Day 4*/
 				var cityTemperature4 = results5.list[4].main.temp;
 				var date4 = results5.list[26].dt;
-				var date4dayjs = dayjs.unix(date4)
+				var dateNew4 = new Date(dayjs.unix(date4));
+				var date4dayjs = dateNew4.toLocaleString("en-US", {weekday: "long", day: "numeric", month: "numeric"});
 				var cityWind4 = results5.list[4].wind.speed;
 				var cityHumidity4 = results5.list[4].main.humidity;
 				var weatherIcon4 = results5.list[4].weather[0].icon;
@@ -246,7 +249,8 @@ function forecastCity (userInputCity){
 
 				var cityTemperature5 = results5.list[5].main.temp;
 				var date5 = results5.list[34].dt;
-				var date5dayjs = dayjs.unix(date5);
+				var dateNew5 = new Date(dayjs.unix(date5));
+				var date5dayjs = dateNew5.toLocaleString("en-US", {weekday: "long", day: "numeric", month: "numeric"});
 				var cityWind5 = results5.list[5].wind.speed;
 				var cityHumidity5 = results5.list[5].main.humidity;
 				var weatherIcon5 = results5.list[5].weather[0].icon;
