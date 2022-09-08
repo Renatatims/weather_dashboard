@@ -19,27 +19,31 @@ var humidityEl = $("#humidity");
 var uvIndexEl = $("#uvIndex");
 
 //5-day Forecast Variables
-
+var forecastDate1El = $("#forecastDate1")
 var temperature1El = $("#temperature1");
 var icon1El =$("#icon1");
 var wind1El = $("#wind1");
 var humidity1El = $("#humidity1")
 
+var forecastDate2El = $("#forecastDate2")
 var temperature2El = $("#temperature2");
 var icon2El =$("#icon2");
 var wind2El = $("#wind2");
 var humidity2El = $("#humidity2");
 
+var forecastDate3El = $("#forecastDate3")
 var temperature3El = $("#temperature3");
 var icon3El =$("#icon3");
 var wind3El = $("#wind3");
 var humidity3El = $("#humidity3");
 
+var forecastDate4El = $("#forecastDate4")
 var temperature4El = $("#temperature4");
 var icon4El =$("#icon4");
 var wind4El = $("#wind4");
 var humidity4El = $("#humidity4")
 
+var forecastDate5El = $("#forecastDate5")
 var temperature5El = $("#temperature5");
 var icon5El =$("#icon5");
 var wind5El = $("#wind5");
@@ -51,6 +55,9 @@ var humidity5El = $("#humidity5");
 var searchHistoryEl = $("#searchHistory");
 var historyArr = [];
 var clearHistoryBtn =$("#clearHistory")
+
+
+
 
 // Function Init - calls Search City function - once the user types in the city and click the Search button, then fetch will be executed.
 
@@ -91,8 +98,13 @@ function weatherCity(userInputCity){
 
 				var resultCity = resultWeatherCity;
 				var cityName = resultCity.name;
-				var today = new Date();
-				var currentDate = (today.getMonth()+1) + "/" + today.getDate();
+				//var today = new Date();
+				//var currentDate = (today.getMonth()+1) + "/" + today.getDate();
+				//Current Date displayed//
+
+				var currentDayEl = dayjs().format("dddd, MMMM D");
+
+
 				var cityTemperature = resultCity.main.temp;
 				var cityWind = resultCity.wind.speed;
 				var cityHumidity = resultCity.main.humidity;
@@ -102,7 +114,8 @@ function weatherCity(userInputCity){
 				historySave(cityName);
 
 				chosenCityEl.text(cityName);
-				currentDateEl.text(currentDate);
+				$("#currentDate").text(currentDayEl);
+				//currentDateEl.text(currentDate);
 				iconEl.attr("src", iconCompleteUrl);
 				temperatureEl.text("Temperature: " + cityTemperature + "°C");
 				windEl.text("Wind: " + cityWind + "km/h");
@@ -167,12 +180,16 @@ function forecastCity (userInputCity){
 				/*Day 1*/
 									
 				var cityTemperature1 = results5.list[1].main.temp;
+				var date1 = results5.list[2].dt;
+				var date1dayjs = new Date(dayjs.unix(date1));
+				var d1js = date1dayjs.toLocaleString("en-US", {weekday: "long", day: "numeric", month: "numeric"});
 				var cityWind1 = results5.list[1].wind.speed;
 				var cityHumidity1 = results5.list[1].main.humidity;
 				var weatherIcon1 = results5.list[1].weather[0].icon;
 				var iconCompleteUrl1 = iconWeatherUrl + weatherIcon1 + '.png';
 
 				temperature1El.text("Temperature: " + cityTemperature1 + "°C");
+				forecastDate1El.text(d1js);
 				icon1El.attr("src", iconCompleteUrl1);
 				wind1El.text("Wind: " + cityWind1 + "km/h" );
 				humidity1El.text("Humidity: " + cityHumidity1 + "%");
@@ -181,12 +198,15 @@ function forecastCity (userInputCity){
 				/*Day 2*/
 
 				var cityTemperature2 = results5.list[2].main.temp;
+				var date2 = results5.list[10].dt;
+				var date2dayjs = dayjs.unix(date2)
 				var cityWind2 = results5.list[2].wind.speed;
 				var cityHumidity2 = results5.list[2].main.humidity;
 				var weatherIcon2 = results5.list[2].weather[0].icon;
 				var iconCompleteUrl2 = iconWeatherUrl + weatherIcon2 + '.png';
 
 				temperature2El.text("Temperature: " + cityTemperature2 + "°C");
+				forecastDate2El.text(date2dayjs);
 				icon2El.attr("src", iconCompleteUrl2);
 				wind2El.text("Wind: " + cityWind2 + "km/h" );
 				humidity2El.text("Humidity: " + cityHumidity2 + "%");
@@ -194,24 +214,30 @@ function forecastCity (userInputCity){
 				/*Day 3*/
 
 				var cityTemperature3 = results5.list[3].main.temp;
+				var date3 = results5.list[18].dt;
+				var date3dayjs = dayjs.unix(date3)
 				var cityWind3 = results5.list[3].wind.speed;
 				var cityHumidity3 = results5.list[3].main.humidity;
 				var weatherIcon3 = results5.list[3].weather[0].icon;
 				var iconCompleteUrl3 = iconWeatherUrl + weatherIcon3 + '.png';
 
 				temperature3El.text("Temperature: " + cityTemperature3 + "°C");
+				forecastDate3El.text(date3dayjs);
 				icon3El.attr("src", iconCompleteUrl3);
 				wind3El.text("Wind: " + cityWind3 + "km/h" );
 				humidity3El.text("Humidity: " + cityHumidity3 + "%");
 
 				/*Day 4*/
 				var cityTemperature4 = results5.list[4].main.temp;
+				var date4 = results5.list[26].dt;
+				var date4dayjs = dayjs.unix(date4)
 				var cityWind4 = results5.list[4].wind.speed;
 				var cityHumidity4 = results5.list[4].main.humidity;
 				var weatherIcon4 = results5.list[4].weather[0].icon;
 				var iconCompleteUrl4 = iconWeatherUrl + weatherIcon4 + '.png';
 
 				temperature4El.text("Temperature: " + cityTemperature4 + "°C");
+				forecastDate4El.text(date4dayjs);
 				icon4El.attr("src", iconCompleteUrl4);
 				wind4El.text("Wind: " + cityWind4 + "km/h" );
 				humidity4El.text("Humidity: " + cityHumidity4 + "%");
@@ -219,12 +245,15 @@ function forecastCity (userInputCity){
 				/*Day 5*/
 
 				var cityTemperature5 = results5.list[5].main.temp;
+				var date5 = results5.list[34].dt;
+				var date5dayjs = dayjs.unix(date5);
 				var cityWind5 = results5.list[5].wind.speed;
 				var cityHumidity5 = results5.list[5].main.humidity;
 				var weatherIcon5 = results5.list[5].weather[0].icon;
 				var iconCompleteUrl5 = iconWeatherUrl + weatherIcon5 + '.png';
 
 				temperature5El.text("Temperature: " + cityTemperature5 + "°C");
+				forecastDate5El.text(date5dayjs);
 				icon5El.attr("src", iconCompleteUrl5);
 				wind5El.text("Wind: " + cityWind5 + "km/h" );
 				humidity5El.text("Humidity: " + cityHumidity5 + "%");
