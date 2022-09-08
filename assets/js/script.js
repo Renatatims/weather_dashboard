@@ -141,12 +141,24 @@ function weatherCity(userInputCity){
 									event.preventDefault;
 									if(UVI < 3){
 										uvIndexEl.addClass("low");
-									}else if (UVI < 6){
+										uvIndexEl.removeClass("moderate")
+										uvIndexEl.removeClass("high")
+										uvIndexEl.removeClass("veryHigh")
+									}else if (UVI > 3 && UVI < 6 ){
 										uvIndexEl.addClass("moderate");
-									}else if (UVI < 8){
+										uvIndexEl.removeClass("low")
+										uvIndexEl.removeClass("high")
+										uvIndexEl.removeClass("veryHigh")
+									}else if (UVI > 6 && UVI < 8){
 										uvIndexEl.addClass("high");
+										uvIndexEl.removeClass("low")
+										uvIndexEl.removeClass("moderate")
+										uvIndexEl.removeClass("veryHigh")
 									}else{
 										uvIndexEl.addClass("veryHigh");
+										uvIndexEl.removeClass("low")
+										uvIndexEl.removeClass("moderate")
+										uvIndexEl.removeClass("high")
 									}
 									
 								})
@@ -311,6 +323,7 @@ function historyClear(){
 	clearHistoryBtn.on("click", function(){
 		searchHistoryEl.empty();
 		localStorage.clear();
+		historyArr = [];
 	})
 };
 
