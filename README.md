@@ -1,6 +1,6 @@
 # weather_dashboard
 
-This application consists of a weather dashboard
+This application consists of a Weather Dashboard
 
 # Features:
 
@@ -8,7 +8,7 @@ This application consists of a weather dashboard
 
 2. Current weather conditions consists of:
     - City Name
-    - Date
+    - Current Date
     - Icon representation of the current weather condition
     - Temperature
     - Wind Speed
@@ -23,8 +23,38 @@ This application consists of a weather dashboard
     - Humidity
 
 4. Search history saved - the user can also access the city's weather conditions through the history.
+    - Only unique values are saved with the following functions:
+
+ ````java
+
+ function uniqueValuesHistory() {
+					if (historyArr.includes(cityName) === false) {
+						console.log(historyArr);
+						historySave(cityName);
+					}
+				}
+				uniqueValuesHistory(cityName);
+    
+````
+
+````java
+
+function historySave(userInputCity) {
+	historyArr.push(userInputCity);
+	localStorage.setItem("cityHistory", JSON.stringify(historyArr));
+	searchHistoryEl.empty();
+	historyDisplay();
+	console.log(historyArr);
+
+}
+
+````
+
+
 
 ## Preview
+
+
 
 ## Tools
 

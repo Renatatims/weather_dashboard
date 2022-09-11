@@ -3,7 +3,7 @@
 var APIkey = "appid=4b240ff285db6735e81b43a05878c1bf";
 var searchBtn = $("#search");
 var weatherUrl = "https://api.openweathermap.org/data/2.5/weather";
-var units = "&units=metric"
+var units = "&units=imperial"
 var forecastUrl = "https://api.openweathermap.org/data/2.5/forecast";
 var iconWeatherUrl = "https://openweathermap.org/img/wn/";
 var uviUrl = 'https://api.openweathermap.org/data/2.5/uvi'
@@ -69,7 +69,7 @@ function init() {
 	historyClick();
 	historyClear();
 	historyDisplay();
-
+	
 };
 
 // Function - Event Listener to Search Button
@@ -79,10 +79,12 @@ function searchCity() {
 		event.preventDefault();
 		var userInputCity = $("#city").val().trim();
 		if (userInputCity === "") {
-			return;
-		}
+				return;
+		}	
 		weatherCity(userInputCity);
 		forecastCity(userInputCity);
+		
+		
 	});
 };
 
@@ -99,16 +101,12 @@ function weatherCity(userInputCity) {
 
 				var resultCity = resultWeatherCity;
 				var cityName = resultCity.name;
-				//var today = new Date();
-				//var currentDate = (today.getMonth()+1) + "/" + today.getDate();
+		
 				//Current Date displayed//
 
 				var dtUnixCurrent = resultCity.dt;
 				var currentDay = new Date(dayjs.unix(dtUnixCurrent));
-				var dateCurrentjs = currentDay.toLocaleString("en-US", { weekday: "long", day: "numeric", month: "numeric" });
-				//var currentDayEl = dayjs().format("dddd, MMMM D");
-
-
+				var dateCurrentjs = currentDay.toLocaleString("en-US", { weekday: "long", day: "numeric", month: "numeric", year:"numeric" });
 				var cityTemperature = resultCity.main.temp;
 				var cityWind = resultCity.wind.speed;
 				var cityHumidity = resultCity.main.humidity;
@@ -118,12 +116,9 @@ function weatherCity(userInputCity) {
 
 				//Unique values saved to History 
 				function uniqueValuesHistory() {
-					if (historyArr.includes(userInputCity) === false) {
+					if (historyArr.includes(cityName) === false) {
 						console.log(historyArr);
 						historySave(cityName);
-
-					} else {
-						console.log("hello");
 					}
 				}
 				uniqueValuesHistory(cityName);
@@ -133,11 +128,10 @@ function weatherCity(userInputCity) {
 
 				chosenCityEl.text(cityName);
 				currentDateEl.text(dateCurrentjs);
-				//currentDateEl.text(currentDate);
 				iconEl.attr("src", iconCompleteUrl);
-				temperatureEl.text("Temperature: " + cityTemperature + "°C");
-				windEl.text("Wind: " + cityWind + "km/h");
-				humidityEl.text("Humidity: " + cityHumidity + "%");
+				temperatureEl.text("Temp: " + cityTemperature + " °F");
+				windEl.text("Wind: " + cityWind + " MPH");
+				humidityEl.text("Humidity: " + cityHumidity + " %");
 
 
 				console.log(resultCity);
@@ -154,7 +148,7 @@ function weatherCity(userInputCity) {
 
 							function colorCode() {
 								var UVI = resultUvi.value;
-								uvIndexEl.text("UV Index: " + UVI);
+								uvIndexEl.text(UVI);
 								uvIndexEl.each(function (event) {
 									event.preventDefault;
 									if (UVI < 3) {
@@ -212,17 +206,17 @@ function forecastCity(userInputCity) {
 				var cityTemperature1 = results5.list[2].main.temp;
 				var date1 = results5.list[2].dt;
 				var dateNew1 = new Date(dayjs.unix(date1));
-				var date1dayjs = dateNew1.toLocaleString("en-US", { weekday: "long", day: "numeric", month: "numeric" });
+				var date1dayjs = dateNew1.toLocaleString("en-US", { weekday: "long", day: "numeric", month: "numeric", year:"numeric" });
 				var cityWind1 = results5.list[2].wind.speed;
 				var cityHumidity1 = results5.list[2].main.humidity;
 				var weatherIcon1 = results5.list[2].weather[0].icon;
 				var iconCompleteUrl1 = iconWeatherUrl + weatherIcon1 + '.png';
 
-				temperature1El.text("Temperature: " + cityTemperature1 + "°C");
+				temperature1El.text("Temp: " + cityTemperature1 + " °F");
 				forecastDate1El.text(date1dayjs);
 				icon1El.attr("src", iconCompleteUrl1);
-				wind1El.text("Wind: " + cityWind1 + "km/h");
-				humidity1El.text("Humidity: " + cityHumidity1 + "%");
+				wind1El.text("Wind: " + cityWind1 + " MPH");
+				humidity1El.text("Humidity: " + cityHumidity1 + " %");
 
 
 				/*Day 2*/
@@ -230,67 +224,67 @@ function forecastCity(userInputCity) {
 				var cityTemperature2 = results5.list[10].main.temp;
 				var date2 = results5.list[10].dt;
 				var dateNew2 = new Date(dayjs.unix(date2));
-				var date2dayjs = dateNew2.toLocaleString("en-US", { weekday: "long", day: "numeric", month: "numeric" });
+				var date2dayjs = dateNew2.toLocaleString("en-US", { weekday: "long", day: "numeric", month: "numeric", year:"numeric" });
 				var cityWind2 = results5.list[10].wind.speed;
 				var cityHumidity2 = results5.list[10].main.humidity;
 				var weatherIcon2 = results5.list[10].weather[0].icon;
 				var iconCompleteUrl2 = iconWeatherUrl + weatherIcon2 + '.png';
 
-				temperature2El.text("Temperature: " + cityTemperature2 + "°C");
+				temperature2El.text("Temp: " + cityTemperature2 + " °F");
 				forecastDate2El.text(date2dayjs);
 				icon2El.attr("src", iconCompleteUrl2);
-				wind2El.text("Wind: " + cityWind2 + "km/h");
-				humidity2El.text("Humidity: " + cityHumidity2 + "%");
+				wind2El.text("Wind: " + cityWind2 + " MPH");
+				humidity2El.text("Humidity: " + cityHumidity2 + " %");
 
 				/*Day 3*/
 
 				var cityTemperature3 = results5.list[18].main.temp;
 				var date3 = results5.list[18].dt;
 				var dateNew3 = new Date(dayjs.unix(date3));
-				var date3dayjs = dateNew3.toLocaleString("en-US", { weekday: "long", day: "numeric", month: "numeric" });
+				var date3dayjs = dateNew3.toLocaleString("en-US", { weekday: "long", day: "numeric", month: "numeric", year:"numeric"});
 				var cityWind3 = results5.list[18].wind.speed;
 				var cityHumidity3 = results5.list[18].main.humidity;
 				var weatherIcon3 = results5.list[18].weather[0].icon;
 				var iconCompleteUrl3 = iconWeatherUrl + weatherIcon3 + '.png';
 
-				temperature3El.text("Temperature: " + cityTemperature3 + "°C");
+				temperature3El.text("Temp: " + cityTemperature3 + " °F");
 				forecastDate3El.text(date3dayjs);
 				icon3El.attr("src", iconCompleteUrl3);
-				wind3El.text("Wind: " + cityWind3 + "km/h");
-				humidity3El.text("Humidity: " + cityHumidity3 + "%");
+				wind3El.text("Wind: " + cityWind3 + " MPH");
+				humidity3El.text("Humidity: " + cityHumidity3 + " %");
 
 				/*Day 4*/
 				var cityTemperature4 = results5.list[26].main.temp;
 				var date4 = results5.list[26].dt;
 				var dateNew4 = new Date(dayjs.unix(date4));
-				var date4dayjs = dateNew4.toLocaleString("en-US", { weekday: "long", day: "numeric", month: "numeric" });
+				var date4dayjs = dateNew4.toLocaleString("en-US", { weekday: "long", day: "numeric", month: "numeric", year:"numeric"});
 				var cityWind4 = results5.list[26].wind.speed;
 				var cityHumidity4 = results5.list[26].main.humidity;
 				var weatherIcon4 = results5.list[26].weather[0].icon;
 				var iconCompleteUrl4 = iconWeatherUrl + weatherIcon4 + '.png';
 
-				temperature4El.text("Temperature: " + cityTemperature4 + "°C");
+				temperature4El.text("Temp: " + cityTemperature4 + " °F");
 				forecastDate4El.text(date4dayjs);
 				icon4El.attr("src", iconCompleteUrl4);
-				wind4El.text("Wind: " + cityWind4 + "km/h");
-				humidity4El.text("Humidity: " + cityHumidity4 + "%");
+				wind4El.text("Wind: " + cityWind4 + " MPH");
+				humidity4El.text("Humidity: " + cityHumidity4 + " %");
 
 				/*Day 5*/
 
 				var cityTemperature5 = results5.list[34].main.temp;
 				var date5 = results5.list[34].dt;
 				var dateNew5 = new Date(dayjs.unix(date5));
-				var date5dayjs = dateNew5.toLocaleString("en-US", { weekday: "long", day: "numeric", month: "numeric" });
+				var date5dayjs = dateNew5.toLocaleString("en-US", { weekday: "long", day: "numeric", month: "numeric", year:"numeric" });
 				var cityWind5 = results5.list[34].wind.speed;
 				var cityHumidity5 = results5.list[34].main.humidity;
 				var weatherIcon5 = results5.list[34].weather[0].icon;
 				var iconCompleteUrl5 = iconWeatherUrl + weatherIcon5 + '.png';
 
-				temperature5El.text("Temperature: " + cityTemperature5 + "°C");
+				temperature5El.text("Temp: " + cityTemperature5 + " °F");
 				forecastDate5El.text(date5dayjs);
 				icon5El.attr("src", iconCompleteUrl5);
-				wind5El.text("Wind: " + cityWind5 + "km/h");
-				humidity5El.text("Humidity: " + cityHumidity5 + "%");
+				wind5El.text("Wind: " + cityWind5 + " MPH");
+				humidity5El.text("Humidity: " + cityHumidity5 + " %");
 
 			})
 		}
@@ -333,6 +327,9 @@ function historyClick() {
 		forecastCity(cityLi);
 	})
 };
+
+
+// Clear Button Function - clears history cities
 
 
 function historyClear() {
