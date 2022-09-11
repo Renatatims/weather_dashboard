@@ -1,3 +1,5 @@
+//Variables - Urls
+
 var APIkey = "appid=4b240ff285db6735e81b43a05878c1bf";
 var searchBtn = $("#search");
 var weatherUrl = "https://api.openweathermap.org/data/2.5/weather";
@@ -67,7 +69,7 @@ function init() {
 	historyClick();
 	historyClear();
 	historyDisplay();
-	
+
 };
 
 // Function - Event Listener to Search Button
@@ -111,11 +113,23 @@ function weatherCity(userInputCity) {
 				var cityWind = resultCity.wind.speed;
 				var cityHumidity = resultCity.main.humidity;
 				var weatherIcon = resultCity.weather[0].icon;
-				
+
 				var iconCompleteUrl = iconWeatherUrl + weatherIcon + '.png';
 
-				historySave(cityName);
-				
+				//Unique values saved to History 
+				function uniqueValuesHistory() {
+					if (historyArr.includes(userInputCity) === false) {
+						console.log(historyArr);
+						historySave(cityName);
+
+					} else {
+						console.log("hello");
+					}
+				}
+				uniqueValuesHistory(cityName);
+
+
+				//Values displayed on current City Weather section
 
 				chosenCityEl.text(cityName);
 				currentDateEl.text(dateCurrentjs);
@@ -287,14 +301,12 @@ function forecastCity(userInputCity) {
 
 //History Save//
 
-
 function historySave(userInputCity) {
-	var historyObj = {};
-	historyObj["historyCity"] = userInputCity;
-	historyArr.push(historyObj);
+	historyArr.push(userInputCity);
 	localStorage.setItem("cityHistory", JSON.stringify(historyArr));
 	searchHistoryEl.empty();
 	historyDisplay();
+	console.log(historyArr);
 
 }
 
@@ -304,7 +316,7 @@ function historyDisplay() {
 	var getHistory = JSON.parse(localStorage.getItem("cityHistory"));
 	for (var i = 0; i < getHistory.length; i++) {
 		var cityHistoryLi = $('<li>');
-		cityHistoryLi.text(getHistory[i].historyCity);
+		cityHistoryLi.text(getHistory[i]);
 		searchHistoryEl.append(cityHistoryLi);
 	}
 	return (historyArr = getHistory);
