@@ -6,7 +6,7 @@ var weatherUrl = "https://api.openweathermap.org/data/2.5/weather";
 var units = "&units=imperial"
 var forecastUrl = "https://api.openweathermap.org/data/2.5/forecast";
 var iconWeatherUrl = "https://openweathermap.org/img/wn/";
-var uviUrl = 'https://api.openweathermap.org/data/2.5/uvi'
+var uviUrl = "https://api.openweathermap.org/data/2.5/uvi";
 
 // Weather Forecast - Current and 5-days
 var weatherForecastEl = $("#weatherForecast");
@@ -106,7 +106,7 @@ function weatherCity(userInputCity) {
 
 				var dtUnixCurrent = resultCity.dt;
 				var currentDay = new Date(dayjs.unix(dtUnixCurrent));
-				var dateCurrentjs = currentDay.toLocaleString("en-US", { weekday: "long", day: "numeric", month: "numeric", year:"numeric" });
+				var dateCurrentjs = currentDay.toLocaleString("en-US", { weekday: "short", day: "numeric", month: "numeric", year:"numeric" });
 				var cityTemperature = resultCity.main.temp;
 				var cityWind = resultCity.wind.speed;
 				var cityHumidity = resultCity.main.humidity;
@@ -206,7 +206,7 @@ function forecastCity(userInputCity) {
 				var cityTemperature1 = results5.list[2].main.temp;
 				var date1 = results5.list[2].dt;
 				var dateNew1 = new Date(dayjs.unix(date1));
-				var date1dayjs = dateNew1.toLocaleString("en-US", { weekday: "long", day: "numeric", month: "numeric", year:"numeric" });
+				var date1dayjs = dateNew1.toLocaleString("en-US", { weekday: "short", day: "numeric", month: "numeric", year:"numeric" });
 				var cityWind1 = results5.list[2].wind.speed;
 				var cityHumidity1 = results5.list[2].main.humidity;
 				var weatherIcon1 = results5.list[2].weather[0].icon;
@@ -224,7 +224,7 @@ function forecastCity(userInputCity) {
 				var cityTemperature2 = results5.list[10].main.temp;
 				var date2 = results5.list[10].dt;
 				var dateNew2 = new Date(dayjs.unix(date2));
-				var date2dayjs = dateNew2.toLocaleString("en-US", { weekday: "long", day: "numeric", month: "numeric", year:"numeric" });
+				var date2dayjs = dateNew2.toLocaleString("en-US", { weekday: "short", day: "numeric", month: "numeric", year:"numeric" });
 				var cityWind2 = results5.list[10].wind.speed;
 				var cityHumidity2 = results5.list[10].main.humidity;
 				var weatherIcon2 = results5.list[10].weather[0].icon;
@@ -241,7 +241,7 @@ function forecastCity(userInputCity) {
 				var cityTemperature3 = results5.list[18].main.temp;
 				var date3 = results5.list[18].dt;
 				var dateNew3 = new Date(dayjs.unix(date3));
-				var date3dayjs = dateNew3.toLocaleString("en-US", { weekday: "long", day: "numeric", month: "numeric", year:"numeric"});
+				var date3dayjs = dateNew3.toLocaleString("en-US", { weekday: "short", day: "numeric", month: "numeric", year:"numeric"});
 				var cityWind3 = results5.list[18].wind.speed;
 				var cityHumidity3 = results5.list[18].main.humidity;
 				var weatherIcon3 = results5.list[18].weather[0].icon;
@@ -257,7 +257,7 @@ function forecastCity(userInputCity) {
 				var cityTemperature4 = results5.list[26].main.temp;
 				var date4 = results5.list[26].dt;
 				var dateNew4 = new Date(dayjs.unix(date4));
-				var date4dayjs = dateNew4.toLocaleString("en-US", { weekday: "long", day: "numeric", month: "numeric", year:"numeric"});
+				var date4dayjs = dateNew4.toLocaleString("en-US", { weekday: "short", day: "numeric", month: "numeric", year:"numeric"});
 				var cityWind4 = results5.list[26].wind.speed;
 				var cityHumidity4 = results5.list[26].main.humidity;
 				var weatherIcon4 = results5.list[26].weather[0].icon;
@@ -274,7 +274,7 @@ function forecastCity(userInputCity) {
 				var cityTemperature5 = results5.list[34].main.temp;
 				var date5 = results5.list[34].dt;
 				var dateNew5 = new Date(dayjs.unix(date5));
-				var date5dayjs = dateNew5.toLocaleString("en-US", { weekday: "long", day: "numeric", month: "numeric", year:"numeric" });
+				var date5dayjs = dateNew5.toLocaleString("en-US", { weekday: "short", day: "numeric", month: "numeric", year:"numeric" });
 				var cityWind5 = results5.list[34].wind.speed;
 				var cityHumidity5 = results5.list[34].main.humidity;
 				var weatherIcon5 = results5.list[34].weather[0].icon;

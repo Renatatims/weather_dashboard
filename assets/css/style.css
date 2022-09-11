@@ -1,5 +1,5 @@
 *{
-    padding: 0.3px;
+    padding: 3px;
 
 }
 
@@ -40,6 +40,19 @@
     text-align: center;
     padding: 10px;
     margin: 5px;
+    
+}
+#searchHistory li:hover{
+    color:  rgb(152, 176, 197);
+}
+
+#clearHistory{
+    border-radius: 10px;
+    margin:10px;
+}
+
+#clearHistory:hover{
+    background-color: rgb(152, 176, 197);
 }
 
 .low{
