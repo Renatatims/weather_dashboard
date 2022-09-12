@@ -69,7 +69,7 @@ function weatherCity(userInputCity) {
 				var currentDay = new Date(dayjs.unix(dtUnixCurrent));
 				var dateCurrentjs = currentDay.toLocaleString("en-US", { weekday: "short", day: "numeric", month: "numeric", year:"numeric" });
 				var cityTemperature = resultCity.main.temp.toFixed(0);
-				var cityWind = resultCity.wind.speed;
+				var cityWind = resultCity.wind.speed.toFixed(0);
 				var cityHumidity = resultCity.main.humidity;
 				var weatherIcon = resultCity.weather[0].icon;
 
@@ -91,7 +91,7 @@ function weatherCity(userInputCity) {
 				currentDateEl.text(dateCurrentjs);
 				iconEl.attr("src", iconCompleteUrl);
 				temperatureEl.text("Temp: " + cityTemperature + " °F");
-				windEl.text("Wind: " + cityWind + " MPH");
+				windEl.text("Wind: " + cityWind + " mph");
 				humidityEl.text("Humidity: " + cityHumidity + " %");
 
 
@@ -108,7 +108,7 @@ function weatherCity(userInputCity) {
 						uviResponse.json().then(function (resultUvi) {
 
 							function colorCode() {
-								var UVI = resultUvi.value;
+								var UVI = resultUvi.value.toFixed(1);
 								uvIndexEl.text(UVI);
 								uvIndexEl.each(function (event) {
 									event.preventDefault;
@@ -160,7 +160,7 @@ function forecastCity(userInputCity) {
 				var date1 = results5.list[((i+1)*8-3)].dt;
 				var dateNew1 = new Date(dayjs.unix(date1));
 				var date1dayjs = dateNew1.toLocaleString("en-US", { weekday: "short", day: "numeric", month: "numeric", year:"numeric" });
-				var cityWind1 = results5.list[((i+1)*8-3)].wind.speed;
+				var cityWind1 = results5.list[((i+1)*8-3)].wind.speed.toFixed(0);
 				var cityHumidity1 = results5.list[((i+1)*8-3)].main.humidity;
 				var weatherIcon1 = results5.list[((i+1)*8-3)].weather[0].icon;
 				var iconCompleteUrl1 = iconWeatherUrl + weatherIcon1 + '.png';
@@ -168,7 +168,7 @@ function forecastCity(userInputCity) {
 				$("#forecastTemperature"+i).text("Temp: " + cityTemperature1 + " °F");
 				$("#forecastDate"+i).text(date1dayjs);
 				$("#forecastIcon"+i).attr("src", iconCompleteUrl1);
-				$("#forecastWind"+i).text("Wind: " + cityWind1 + " MPH");
+				$("#forecastWind"+i).text("Wind: " + cityWind1 + " mph");
 				$("#forecastHumidity"+i).text("Humidity: " + cityHumidity1 + " %");
 
 				}
