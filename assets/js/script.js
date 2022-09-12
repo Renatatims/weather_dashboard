@@ -19,20 +19,10 @@ var windEl = $("#wind");
 var humidityEl = $("#humidity");
 var uvIndexEl = $("#uvIndex");
 
-//**5-day Forecast Variables**//
-
-//Variables Day 1
-var forecastDate1El = $("#forecastDate1")
-var temperature1El = $("#temperature1");
-var icon1El = $("#icon1");
-var wind1El = $("#wind1");
-var humidity1El = $("#humidity1")
-
 //History Variables//
 var searchHistoryEl = $("#searchHistory");
 var historyArr = [];
 var clearHistoryBtn = $("#clearHistory")
-
 
 //Function Init - calls Search City function - once the user types in the city and click the Search button, then fetch will be executed.
 function init() {
@@ -155,6 +145,7 @@ function weatherCity(userInputCity) {
 };
 
 // Function - Forecast - 5 days - For Loop 
+
 function forecastCity(userInputCity) {
 	var forecastQueryUrl = forecastUrl + "?q=" + userInputCity + units + "&" + APIkey;
 	fetch(forecastQueryUrl).then(function (city5Response) {
@@ -165,13 +156,13 @@ function forecastCity(userInputCity) {
 
 				for (i=0; i<5; i++){
 			
-				var cityTemperature1 = results5.list[((i+1)*8-1)].main.temp.toFixed(0);
-				var date1 = results5.list[((i+1)*8-1)].dt;
+				var cityTemperature1 = results5.list[((i+1)*8-3)].main.temp.toFixed(0);
+				var date1 = results5.list[((i+1)*8-3)].dt;
 				var dateNew1 = new Date(dayjs.unix(date1));
 				var date1dayjs = dateNew1.toLocaleString("en-US", { weekday: "short", day: "numeric", month: "numeric", year:"numeric" });
-				var cityWind1 = results5.list[((i+1)*8-1)].wind.speed;
-				var cityHumidity1 = results5.list[((i+1)*8-1)].main.humidity;
-				var weatherIcon1 = results5.list[((i+1)*8-1)].weather[0].icon;
+				var cityWind1 = results5.list[((i+1)*8-3)].wind.speed;
+				var cityHumidity1 = results5.list[((i+1)*8-3)].main.humidity;
+				var weatherIcon1 = results5.list[((i+1)*8-3)].weather[0].icon;
 				var iconCompleteUrl1 = iconWeatherUrl + weatherIcon1 + '.png';
 
 				$("#forecastTemperature"+i).text("Temp: " + cityTemperature1 + " °F");
