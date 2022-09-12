@@ -1,5 +1,4 @@
 //Variables - Urls
-
 var APIkey = "appid=4b240ff285db6735e81b43a05878c1bf";
 var searchBtn = $("#search");
 var weatherUrl = "https://api.openweathermap.org/data/2.5/weather";
@@ -20,49 +19,50 @@ var windEl = $("#wind");
 var humidityEl = $("#humidity");
 var uvIndexEl = $("#uvIndex");
 
-//5-day Forecast Variables
+//**5-day Forecast Variables**//
+
+//Variables Day 1
 var forecastDate1El = $("#forecastDate1")
 var temperature1El = $("#temperature1");
 var icon1El = $("#icon1");
 var wind1El = $("#wind1");
 var humidity1El = $("#humidity1")
 
+//Variables Day 2
 var forecastDate2El = $("#forecastDate2")
 var temperature2El = $("#temperature2");
 var icon2El = $("#icon2");
 var wind2El = $("#wind2");
 var humidity2El = $("#humidity2");
 
+//Variables Day 3
 var forecastDate3El = $("#forecastDate3")
 var temperature3El = $("#temperature3");
 var icon3El = $("#icon3");
 var wind3El = $("#wind3");
 var humidity3El = $("#humidity3");
 
+//Variables Day 4
 var forecastDate4El = $("#forecastDate4")
 var temperature4El = $("#temperature4");
 var icon4El = $("#icon4");
 var wind4El = $("#wind4");
 var humidity4El = $("#humidity4")
 
+//Variables Day 5
 var forecastDate5El = $("#forecastDate5")
 var temperature5El = $("#temperature5");
 var icon5El = $("#icon5");
 var wind5El = $("#wind5");
 var humidity5El = $("#humidity5");
 
-
 //History Variables//
-
 var searchHistoryEl = $("#searchHistory");
 var historyArr = [];
 var clearHistoryBtn = $("#clearHistory")
 
 
-
-
-// Function Init - calls Search City function - once the user types in the city and click the Search button, then fetch will be executed.
-
+//Function Init - calls Search City function - once the user types in the city and click the Search button, then fetch will be executed.
 function init() {
 	weatherForecastEl.hide();
 	searchCity();
@@ -72,8 +72,7 @@ function init() {
 	
 };
 
-// Function - Event Listener to Search Button
-
+//Function - Event Listener to Search Button
 function searchCity() {
 	searchBtn.on("click", function (event) {
 		event.preventDefault();
@@ -88,7 +87,7 @@ function searchCity() {
 	});
 };
 
-// Function weatherCity - Fetch to get the citie's information//
+//Function weatherCity - Fetch to get the citie's information//
 
 function weatherCity(userInputCity) {
 	var queryUrl = weatherUrl + "?q=" + userInputCity + units + "&" + APIkey;
@@ -136,7 +135,7 @@ function weatherCity(userInputCity) {
 
 				console.log(resultCity);
 
-				// UV Index // specific URL for UV index
+				// UV Index - specific URL for UV index
 
 				var latCity = resultCity.coord.lat;
 				var lonCity = resultCity.coord.lon;
@@ -172,19 +171,12 @@ function weatherCity(userInputCity) {
 										uvIndexEl.removeClass("moderate")
 										uvIndexEl.removeClass("high")
 									}
-
 								})
 							}
-
 							colorCode();
-
-
 						});
 					};
 				});
-
-
-
 			});
 		};
 	});
@@ -202,7 +194,6 @@ function forecastCity(userInputCity) {
 				console.log(results5);
 
 				/*Day 1*/
-
 				var cityTemperature1 = results5.list[2].main.temp;
 				var date1 = results5.list[2].dt;
 				var dateNew1 = new Date(dayjs.unix(date1));
@@ -220,7 +211,6 @@ function forecastCity(userInputCity) {
 
 
 				/*Day 2*/
-
 				var cityTemperature2 = results5.list[10].main.temp;
 				var date2 = results5.list[10].dt;
 				var dateNew2 = new Date(dayjs.unix(date2));
@@ -237,7 +227,6 @@ function forecastCity(userInputCity) {
 				humidity2El.text("Humidity: " + cityHumidity2 + " %");
 
 				/*Day 3*/
-
 				var cityTemperature3 = results5.list[18].main.temp;
 				var date3 = results5.list[18].dt;
 				var dateNew3 = new Date(dayjs.unix(date3));
@@ -270,7 +259,6 @@ function forecastCity(userInputCity) {
 				humidity4El.text("Humidity: " + cityHumidity4 + " %");
 
 				/*Day 5*/
-
 				var cityTemperature5 = results5.list[34].main.temp;
 				var date5 = results5.list[34].dt;
 				var dateNew5 = new Date(dayjs.unix(date5));
@@ -291,10 +279,7 @@ function forecastCity(userInputCity) {
 	})
 };
 
-
-
 //History Save//
-
 function historySave(userInputCity) {
 	historyArr.push(userInputCity);
 	localStorage.setItem("cityHistory", JSON.stringify(historyArr));
@@ -305,7 +290,6 @@ function historySave(userInputCity) {
 }
 
 //History Display//
-
 function historyDisplay() {
 	var getHistory = JSON.parse(localStorage.getItem("cityHistory"));
 	for (var i = 0; i < getHistory.length; i++) {
@@ -318,7 +302,6 @@ function historyDisplay() {
 };
 
 //Event Listener to Cities saved on History
-
 function historyClick() {
 	searchHistoryEl.on("click", "li", function () {
 
@@ -330,8 +313,6 @@ function historyClick() {
 
 
 // Clear Button Function - clears history cities
-
-
 function historyClear() {
 	clearHistoryBtn.on("click", function () {
 		searchHistoryEl.empty();
@@ -339,8 +320,6 @@ function historyClear() {
 		historyArr = [];
 	})
 };
-
-
 
 init();
 

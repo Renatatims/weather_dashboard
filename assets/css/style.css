@@ -1,26 +1,21 @@
 *{
     padding: 3px;
-
 }
 
+/*Header*/
 .display-3{
     background-color: rgb(163, 198, 230);
     text-align: center;
     font-weight: bolder;  
     color:white;
     border-radius: 10px;
-    font-size:50px;
-    
- }
+    font-size:50px;   
+}
+
+/*Side-Navigation Bar - History */
 
 .list-group{
     color:black;
-}
-
-.card{
-    background-color: rgb(17, 17, 56);
-    color: white;
-    border-radius: 10px;
 }
 
 #searchHistory{
@@ -29,8 +24,6 @@
     padding: 20px;
     cursor: pointer;
     font-weight: bold;
-
-
 }
 
 #searchHistory li{
@@ -39,9 +32,9 @@
     border-color:white;
     text-align: center;
     padding: 10px;
-    margin: 5px;
-    
+    margin: 5px;    
 }
+
 #searchHistory li:hover{
     color:  rgb(152, 176, 197);
 }
@@ -54,7 +47,17 @@
 #clearHistory:hover{
     background-color: rgb(152, 176, 197);
 }
+/*End of Side-Nav History bar*/
 
+
+/*Cards - include Current and Forecast Weather*/
+.card{
+    background-color: rgb(17, 17, 56);
+    color: white;
+    border-radius: 10px;
+}
+
+/*UV index classes*/
 .low{
     background-color: rgb(106, 204, 106) ;
     color:black;
@@ -99,9 +102,11 @@
     font-weight: bold;
     padding: 2.5px;
 }
+/*end of UVI color - classes*/
 
+
+/*Forecast Date*/
 .forecastDate{
-    font-size: 16px;
-    
+    font-size: 16px;    
 };
 

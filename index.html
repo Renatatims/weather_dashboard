@@ -12,8 +12,10 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
 		integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
 		crossorigin="anonymous" referrerpolicy="no-referrer" />
-	<link rel="stylesheet" href="./assets/css/style.css" />
-	<title>Document</title>
+		<link rel="stylesheet" href="./assets/style/reset.css" />
+		<link rel="stylesheet" href="./assets/css/style.css" />
+		<link rel="icon" type="image/x-icon" href="./assets/icon/favicon.ico">
+	<title>Weather Dashboard</title>
 </head>
 
 <body>
@@ -43,12 +45,12 @@
 				<button id="clearHistory"> Clear History</button>
 			</div>
 		</section>
-    <!-- End of Sidenav-->
+    	<!-- End of Sidenav-->
 
 		
 		<div class="col-sm-9" id="weatherForecast">
 
-		<!--Chosen City -->
+		<!--Chosen City - Current Weather-->
 			<div class="card" style="width:100%">
 				<div class="card-body">
 					<h5 class="card-title" id="chosenCity">Chosen City</h5>
@@ -62,9 +64,9 @@
 				</div>
 			</div>
 
-			<!--End of Chosen City -->
+		<!--End of Chosen City -->
 
-			<!--CARDS - 5 Day Forecast-->
+			<!--CARDS - 5-Day Forecast-->
 			<h2> 5-Day Forecast</h2>
 			<div class="row row-cols-1 row-cols-md-3 g-4">
 				<div class="col">
@@ -131,8 +133,7 @@
 						</div>
 					</div>
 				</div>
-
-				<!--End of Cards-->
+				<!--End of 5-day forecast Cards-->
 
 			</div>
 		</main>
